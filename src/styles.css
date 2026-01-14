@@ -202,9 +202,42 @@ button:hover {
   cursor: not-allowed;
 }
 
+/* ===== WATERMARK ===== */
+.watermark {
+  position: fixed;
+  bottom: 12px;
+  right: 14px;
+  z-index: 40;
+}
+
+.watermark a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.watermark a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
 
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
+
+  .watermark {
+    bottom: 8px;
+    right: 10px;
+  }
+
+  .watermark span {
+    display: none; /* icon-only on small screens */
+  }
 
   .row {
     grid-template-columns:

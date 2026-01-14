@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Semester from "./components/semester";
+import Semester from "./Semester";
 import "./styles.css";
 
 const STORAGE_KEY = "gpa-data";

@@ -226,6 +226,24 @@ button:hover {
   color: var(--accent);
 }
 
+/* Semester credit text */
+.credits {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+/* Total credits under GPA */
+.total-credits {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.gpa strong {
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
 
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
@@ -233,6 +251,10 @@ button:hover {
   .watermark {
     bottom: 8px;
     right: 10px;
+  }
+
+  .total-credits {
+    font-size: 0.85rem;
   }
 
   .watermark span {

@@ -53,16 +53,34 @@ export default function App() {
   return "gpa-high";
 };
 
+  const calculateTotalCredits = () => {
+  return semesters.reduce((total, sem) => {
+    return (
+      total +
+      sem.subjects.reduce(
+        (sum, s) => sum + (s.credits > 0 ? s.credits : 0),
+        0
+      )
+    );
+  }, 0);
+};
+
   const totalGPA = calculateTotalGPA();
+
+  const totalCredits = calculateTotalCredits();
+
 
   return (
     <div className="container">
       <div className="gpa-header">
-        <h1>Total GPA</h1>
-          <span className={getGpaClass(Number(totalGPA))}>
-              {totalGPA}
-          </span>
-      </div>
+  <h1>Total GPA</h1>
+  <span className={getGpaClass(Number(totalGPA))}>
+    {totalGPA}
+  </span>
+  <p className="total-credits">
+    {totalCredits} total credit hours
+  </p>
+</div>
 
       
       {semesters.map((sem, i) => (

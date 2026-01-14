@@ -33,6 +33,19 @@ export default function Semester({ semester, onUpdate, onRemove, canRemove }) {
     });
   };
 
+const calcCredits = () => {
+  return semester.subjects.reduce(
+    (sum, s) => sum + (s.credits > 0 ? s.credits : 0),
+    0
+  );
+};
+
+  const getGpaClass = (gpa) => {
+  if (gpa < 2) return "gpa-low";
+  if (gpa < 3) return "gpa-mid";
+  return "gpa-high";
+  };
+
   return (
     <div className="semester">
       <div className="semester-header">
@@ -46,7 +59,13 @@ export default function Semester({ semester, onUpdate, onRemove, canRemove }) {
         ✕
         </button>
       </div>
-      <p className="gpa">Semester GPA: {calcGPA()}</p>
+      <p className="gpa">
+      Semester GPA:
+        <strong className={getGpaClass(Number(calcGPA()))}>
+        {" "}{calcGPA()}
+        </strong>
+        <span className="credits"> - <strong>{calcCredits()}</strong> credit hours</span>
+      </p>
 
       {semester.subjects.map((s, i) => (
         <SubjectRow
